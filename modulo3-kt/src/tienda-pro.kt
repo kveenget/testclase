@@ -18,12 +18,12 @@ fun productoCostoso(productos: List<Producto> ): List<Producto>{
     }
 }
 
-//crterio
+//criterio
 fun buscarCriterio(
     productos: List<Producto>,
     criterio: (Producto) -> Boolean
 ): List<Producto>{
-    return productos.filter { criterio(it) }
+    return productos.filter (criterio)
 }
 
 
@@ -46,9 +46,13 @@ fun main(){
         println("PRODUCTO COSTOSO: ${producto.nombre} Precio: ${producto.precio}")}
 
     println("----------------------------------------------")
-    buscarCriterio(productos){ producto -> producto.precio > 100000
-    }.forEach {
-        println("El producto con mayor precio: ${it.precio}")
+    buscarCriterio(productos){ it.categoria == "Herramienta"}.forEach { producto ->
+        println("Categoria Herramienta: ${producto.nombre} Precio: ${producto.precio}")
     }
+
+    println("-----------------------------------------------------------")
+    buscarCriterio(productos) { it.stock  == 0}.forEach { producto ->
+        println("Sin Stock: ${producto.nombre} Precio: ${producto.precio}") }
+
 
 }

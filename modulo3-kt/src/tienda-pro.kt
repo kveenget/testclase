@@ -51,7 +51,4 @@ fun main(){
         println("El producto con mayor precio: ${it.precio}")
     }
 
-
-
-
 }
